@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <head>
+        <h1>1. Cálculo da média de 4 notas bisemestrais.</h1>
+    </head>
+    <form id="my_form">
+        Digite a primeira nota bisemestral: <input type = "number" id="nota1"><br>
+        Digite a segunda nota bisemestral:<input type = "number" id="nota2"><br>
+        Digite a terceira nota bisemestral:<input type = "number" id="nota3"><br>
+        Digite a quarta nota bisemestral:<input type = "number" id="nota4"><br>
+        <button type="button" onclick="calculateMedia()">calculate</button><br>
+        A média das notas é <span id="result1"></span>
+
+    </form>
+
+    <script>
+        function calculateMedia() {
+            var nota1 = parseFloat(document.getElementById('my_form').nota1.value)
+            var nota2 = parseFloat(document.getElementById('my_form').nota2.value)
+            var nota3 = parseFloat(document.getElementById('my_form').nota3.value)
+            var nota4 = parseFloat(document.getElementById('my_form').nota4.value) 
+            var media2 = (nota1 + nota2 + nota3 + nota4)/4
+
+            document.getElementById('result1').innerText = media2
+        }
+    </script>
+    <br><br>
+
+    <head>
+        <h1>2. Cálculo da área de um círculo.</h1>
+    </head>
+
+    Digite o raio: <input type = 'number' id='name' onchange='calculateArea()'><br>
+    A área do círculo é <span id='result2'></span>
+
+    <script>
+        function calculateArea()  {
+        const raio = document.getElementById('name').value;
+        var area = Math.PI*(parseFloat(raio)**2)
+        document.getElementById("result2").innerText = area;
+    }
+    </script>
+    <br><br>
+
+    <head>
+        <h1>3. Temperatura de Fahrenheit em Celsius</h1>
+    </head>
+
+    Digite a Temperatura em Fahrenheit:<input type = 'number' id="fahr" onchange="fahrenheitCelsius()"><br>
+    A temperatura é <span id="result3"></span> ºC
+
+    <script>
+        function fahrenheitCelsius() {
+            var fahr = parseFloat(document.getElementById('fahr').value)
+            var cels = 5 * ((fahr - 32)/9)
+            document.getElementById('result3').innerText = cels
+        }
+    </script>
+    <br><br>
+
+
+    <head>
+        <h1>4. Cálculo do perimetro e da área de uma sala retangular.</h1>
+    </head>
+
+    <form id = 'form_perimeter'>
+        Digite o comprimento: <input type = 'number' id="comprimento"><br>
+        Digite a largura: <input type = 'number' id='largura'><br>
+        <button type="button" onclick = 'calculatePerimeter()'>calculate</button><br>
+        O perimetro é <span id="result4_1"></span><br>
+        A área é <span id="result4_2"></span>
+    </form>
+
+    <script>
+        function calculatePerimeter() {
+            var comp = parseFloat(document.getElementById('form_perimeter').comprimento.value)
+            var larg = parseFloat(document.getElementById('form_perimeter').largura.value)
+            var perim = (comp + larg)*2
+            var area = comp*larg
+            document.getElementById('result4_1').innerText = perim
+            document.getElementById('result4_2').innerText = area
+        }
+    </script>
+    <br><br>
+
+
+    <head>
+        <h1>5. Cálculo da quantidade de azulejos necessários para cobrir o chão da cozinha:</h1>
+    </head>
+    
+    <form id = 'form_azulejo'>
+        Digite o comprimento: <input type = 'number' id="comprimento"><br>
+        Digite a largura: <input type = 'number' id='largura'><br>
+        <button type="button" onclick = 'calculateAzulejo()'>calculate</button><br>
+        Precisa de <span id="result5"></span> azulejos.
+    </form>
+
+    <script>
+        function calculateAzulejo() {
+            var comp = parseFloat(document.getElementById('form_azulejo').comprimento.value)
+            var larg = parseFloat(document.getElementById('form_azulejo').largura.value)
+            var azul = (comp * larg)/2.5
+            document.getElementById('result5').innerText = azul
+        }
+    </script>
+
+</body>
+</html>

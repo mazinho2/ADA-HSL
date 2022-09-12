@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+    alert("8. Folha de pagamento");
+
+    function inss(salario) {
+        return salario*0.1;
+    }
+
+    function fgts(salario) {
+        return salario*0.11;
+    }
+
+    function ir(salario) {
+        return salario*0.05
+    }
+
+    const valor = parseFloat(prompt("Digite o valor da sua hora em R$:"));
+    const hora = parseFloat(prompt("Digite a quantidade de horas trabalhadas no mês:"));
+    const salario = valor*hora
+    console.log("Salário Bruto: (%d * %d): R$", valor, hora, salario);
+    console.log("(-) IR (5%): R$", ir(salario));
+    console.log("(-) INSS (10%): R$", inss(salario));
+    console.log("FGTS (11%): R$", fgts(salario));
+    console.log("Total de descontos: R$", ir(salario) + inss(salario));
+    console.log("Salário Liquido: R$", salario - ir(salario) - inss(salario));
+
+
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixação 2_DOM</title>
+</head>
+<body>
+    <script>
+        alert("1. Cáculo da média aritmética e o produto dos números");
+        
+        function calcula_media(num1, num2) {
+            return (num1 + num2)/2;
+        }
+
+        function calcula_produto(num1, num2) {
+            return num1*num2;
+        }
+
+        var num1 = parseFloat(prompt("Digite o primeiro número:"));
+        var num2 = parseFloat(prompt("Digite o primeiro número:"));
+
+        console.log("A média é:", calcula_media(num1,num2));
+        console.log("O produto é:", calcula_produto(num1,num2));
+
+        
+        alert("2. Cálculo da média ponderada");
+
+        function calcula_media_ponderada(nota1, nota2, peso1, peso2) {
+            return (nota1*peso1 + nota2*peso2)/(peso1+peso2)
+        }
+
+        while((peso1*10)%10 != 0 || (peso2*10)%10 != 0){
+            alert("Digite os valores inteiros.")
+            var peso1 = parseFloat(prompt("Digite o peso da primeira prova:"));
+            var peso2 = parseFloat(prompt("Digite o peso da segunda prova:"));
+            
+            console.log(peso1, peso2);
+
+        }
+        
+
+        while((matricula*10)%10 !=0){
+            alert("Digite os valores válidos")
+
+            var matricula = parseFloat(prompt("Digite o número de matrícula:"));
+            var nota1 = parseFloat(prompt('Digite a nota da primeira prova:'));
+            var nota2 = parseFloat(prompt('Digite a nota da segunda prova:'));
+
+            console.log(matricula, nota1, nota2)
+        }
+
+
+        console.log(peso1, peso2, matricula, nota1, nota2)
+
+        console.log("Matrícula: ", matricula, "média: ", calcula_media_ponderada(nota1, nota2, peso1, peso2))
+
+
+        alert("3. Éxercício 2 com função calcula_produto do Ex.1");
+            
+        while(true){
+            alert("Digite os valores inteiros.")
+            
+            var peso1 = parseFloat(prompt("Digite o peso da primeira prova:"));
+            var peso2 = parseFloat(prompt("Digite o peso da segunda prova:"));
+            
+            console.log(peso1, peso2);
+
+            if ((peso1*10)%10 == 0 && (peso2*10)%10 == 0){
+                break;
+            }
+        }
+
+
+        while (true) {
+            alert("Digite os valores válidos")
+
+            var matricula = parseFloat(prompt("Digite o número de matrícula:"));
+            var nota1 = parseFloat(prompt('Digite a nota da primeira prova:'));
+            var nota2 = parseFloat(prompt('Digite a nota da segunda prova:'));
+
+            console.log(matricula, nota1, nota2);
+
+            if ((matricula*10)%10 == 0) {
+                break;
+            }
+        }
+
+        var avg = (calcula_produto(peso1, nota1) + calcula_produto(peso2, nota2))/(peso1 + peso2)
+        console.log("Matrícula: ", matricula, "média: ", avg)
+
+        alert("4. Ex.3 para 2 alunos")
+
+        function calcula_produto(num1, num2) {
+                return num1*num2;
+            }
+
+        for(var i=0; i<2; i++) {
+            while(true){
+                alert("Digite os valores inteiros.")
+                
+                var peso1 = parseFloat(prompt("Digite o peso da primeira prova:"));
+                var peso2 = parseFloat(prompt("Digite o peso da segunda prova:"));
+                
+                console.log(peso1, peso2);
+
+                if ((peso1*10)%10 == 0 && (peso2*10)%10 == 0){
+                    break;
+                }
+            }
+
+
+            while (true) {
+                alert("Digite os valores válidos")
+
+                var matricula = parseFloat(prompt("Digite o número de matrícula:"));
+                var nota1 = parseFloat(prompt('Digite a nota da primeira prova:'));
+                var nota2 = parseFloat(prompt('Digite a nota da segunda prova:'));
+
+                console.log(matricula, nota1, nota2);
+
+                if ((matricula*10)%10 == 0) {
+                    break;
+                }
+            }
+
+            var avg = (calcula_produto(peso1, nota1) + calcula_produto(peso2, nota2))/(peso1 + peso2)
+            console.log("Matrícula: ", matricula, "média: ", avg)
+            
+        }
+
+        alert("5. Cálculo do salário após desconto.");
+
+        function inss(salario) {
+            return salario*0.1;
+        }
+
+        function fgts(salario) {
+            return salario*0.08;
+        }
+
+        const plano_saude = 100
+        var salario = parseFloat(prompt("Digite seu salário:"));
+
+        console.log("Seu salário líquido é ", (salario - inss(salario) - fgts(salario) - plano_saude))
+
+
+        alert("6. Resultado de notas parciais.")
+
+        function calcula_media(num1, num2) {
+                return (num1 + num2)/2;
+            }
+
+        var nota1 = parseFloat(prompt("Digite a primeira nota parcial:"));
+        var nota2 = parseFloat(prompt("Digite a segunda nota parcial:"));
+        
+        const media = calcula_media(nota1, nota2);
+
+        if (media == 10) {
+            console.log("Aprovado com Distinção");
+        } else if (media >= 7) {
+            console.log("Aprovado")
+        } else {
+            console.log("Reprovado")
+        }
+
+
+        alert("7. Resultado do aumento salarial")
+
+        function aumento_salario(salario) {
+            if(salario <= 280) {
+                return salario*0.2;
+            } else if (salario <= 700) {
+                return salario*0.15;
+            } else if (salario <= 1500) {
+                return salario*0.1
+            } else {
+                return salario*0.05
+            }
+        }
+
+        const salario = parseFloat(prompt("Digite o salário atual em R$:"));
+
+        const aumento = aumento_salario(salario);
+
+        console.log("O salário antes do ajuste é R$", salario);
+        console.log("O percentual de aumento aplicado é ", (aumento/salario)*100, "%");
+        console.log("O valor do aumento é R$", aumento);
+        console.log("O novo salário, após o aumento é R$", aumento+salario);
+
+        
+        alert("8. Folha de pagamento");
+
+        function inss(salario) {
+            return salario*0.1;
+        }
+
+        function fgts(salario) {
+            return salario*0.11;
+        }
+
+        function ir(salario) {
+            return salario*0.05
+        }
+
+        const valor = parseFloat(prompt("Digite o valor da sua hora em R$:"));
+        const hora = parseFloat(prompt("Digite a quantidade de horas trabalhadas no mês:"));
+        const salario = valor*hora
+
+        console.log("Salário Bruto: (%d * %d): R$", valor, hora, salario);
+        console.log("(-) IR (5%): R$", ir(salario));
+        console.log("(-) INSS (10%): R$", inss(salario));
+        console.log("FGTS (11%): R$", fgts(salario));
+        console.log("Total de descontos: R$", ir(salario) + inss(salario));
+        console.log("Salário Liquido: R$", salario - ir(salario) - inss(salario));
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- ATIVIDADE DE FIXAÇÃO 1
+
+
+    1 - Faça um Programa que peça as 4 notas bimestrais e mostre a média;
+
+    2 - Faça um Programa que peça o raio de um círculo, calcule e mostre sua área;
+
+    3 - Faça um Programa que peça a temperatura em graus Fahrenheit, transforme e 
+    mostre a temperatura em graus Celsius. C = 5 * ((F-32) / 9); 
+
+    4 - Faça um programa que calcule e mostre a  area e o perímetro de uma sala ~
+    retangular cujas medidas são fornecidas pelo usuário;
+
+    5 - Escreva um programa para ler as dimensões de uma cozinha retangular, em seguida 
+    calcular e escrever a quantidade de caixas de azulejos necess arias para cobrir o 
+    chão da cozinha. Cada caixa de azulejos possui 2,5 m2. -->
+
+    <!-- EXTRA: Fazer esses exercícios usando manipulação do DOM/input do HTML (+100XP) -->
+    <script>
+        alert("1. Cálculo da média de 4 notas bimestrais.");
+        var nota1 = parseFloat(prompt("Digite a primeira nota bisemestral:"));
+        var nota2 = parseFloat(prompt("Digite a segund nota bisemestral:"));
+        var nota3 = parseFloat(prompt("Digite a terceira nota bisemestral:"));
+        var nota4 = parseFloat(prompt("Digite a quarta nota bisemestral:"));
+        alert("A média é " + (nota1 + nota2 + nota3 + nota4)/4);
+        
+        alert("2. Cálculo da área de um círculo.");
+        var raio = parseFloat(prompt("Digite o valor do raio:"));
+        console.log(Math.PI, raio, raio**2);
+        alert("A área do círculo é "+ Math.PI*(raio**2));
+
+        alert("3. Temperatura de Fahrenheit em Celsius");
+        var grau_f = parseFloat(prompt("Digite a temperatura em Fahrenheit"));
+        alert("A temperatura é " + 5*((grau_f - 32)/9));
+
+        alert("4. Cálculo do perimetro de uma sala retangular.");
+        var comprimento = parseFloat(prompt("Digite o comprimento da sala:"));
+        var largura = parseFloat(prompt("Digite a largura da sala:"));
+        alert("O perimetro da sala é " + (comprimento + largura)*2 +". E sua área é " + comprimento*largura);
+
+        alert("5. Cálculo da quantidade de azulejos necessários para cobrir o chão da cozinha:");
+        var comprimento2 = parseFloat(prompt("Digite o comprimento da sala:"));
+        var largura2 = parseFloat(prompt("Digite a largura da sala:"));
+        alert("São necessários " + (comprimento2*largura2)/2.5 + " azulejos.")
+         
+    </script>
+    
+
+</body>
+</html>

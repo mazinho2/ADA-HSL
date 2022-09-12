@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixação2_DOM</title>
+</head>
+<body>
+    <head>
+        <h2>1. Cáculo da média aritmética e o produto dos números</h2>
+
+        <script>
+            function calcula_media(num1, num2) {
+                return (num1 + num2)/2;
+            }
+
+            function calcula_produto(num1, num2) {
+                return num1*num2;
+            }
+        </script>
+    </head>
+    
+    Digite o primeiro número: <input type="number" id="num1"><br>
+    Digite o segundo número: <input tyep="number" id="num2"><br>
+    <button type="button" onclick="calculate_ex1()">calculate</button><br>
+
+    A média é <span id="ex1_1"></span><br>
+    O produto é <span id="ex1_2"></span><br>
+    
+    <script>
+        function calculate_ex1() {
+            let num1 = parseFloat(document.getElementById('num1').value);
+            let num2 = parseFloat(document.getElementById('num2').value);
+            document.getElementById('ex1_1').innerText = calcula_media(num1, num2);   
+            document.getElementById('ex1_2').innerText = calcula_produto(num1, num2);
+        }
+    </script>
+    
+    <hr>
+
+    <head>
+        <h2>2. Cálculo da média ponderada</h2>
+
+        <script>
+            function calcula_media_ponderada(nota1, nota2, peso1, peso2) {
+                return (nota1*peso1 + nota2*peso2)/(peso1+peso2)
+            }
+        </script>
+    </head>
+    <form id="ex2">
+        Numero de matrícula <input type="number" id="matricula"><br>
+        Digite a nota <input type="number" id="nota1"> e peso <input type="number" id="peso1"><br>
+        Digite a nota <input type="number" id="nota2"> e peso <input type="number" id="peso2"><br>
+        <button type="button" onclick="calculate_ex2()">calculate</button><br>
+
+        Matrícula: <span id="ex2_1"></span> - Média: <span id="ex2_2"></span><br>
+    </form>
+
+    <script>
+        function calculate_ex2(){
+            let matricula = parseFloat(document.getElementById('ex2').matricula.value);
+            let nota1 = parseFloat(document.getElementById('ex2').nota1.value);
+            let nota2 = parseFloat(document.getElementById('ex2').nota2.value);
+            let peso1 = parseFloat(document.getElementById('ex2').peso1.value);
+            let peso2 = parseFloat(document.getElementById('ex2').peso2.value);
+
+            if ((peso1*10)%10 != 0 || (peso2*10)%10 != 0) {
+                console.log(peso1, peso2)
+                alert("Os valores de peso devem ser inteiros.");
+            } else if ((matricula*10)%10 !=0) {
+                alert("A matrícula inválida.")
+            } else {
+                document.getElementById('ex2_1').innerText = matricula
+                document.getElementById('ex2_2').innerText = calcula_media_ponderada(nota1, nota2, peso1, peso2)
+            }
+        }
+    </script>
+
+    <hr>
+
+    <head>
+        <h2>3. Éxercício 2 com função calcula_produto do Ex.1</h2>
+    </head>
+
+    <form id="ex3">
+        Numero de matrícula <input type="number" id="matricula"><br>
+        Digite a nota <input type="number" id="nota1"> e peso <input type="number" id="peso1"><br>
+        Digite a nota <input type="number" id="nota2"> e peso <input type="number" id="peso2"><br>
+        <button type="button" onclick="calculate_ex3()">calculate</button><br>
+
+        Matrícula: <span id="ex3_1"></span> - Média: <span id="ex3_2"></span><br>
+    </form>
+
+    <script>
+        function calculate_ex3(){
+            let matricula = parseFloat(document.getElementById('ex3').matricula.value);
+            let nota1 = parseFloat(document.getElementById('ex3').nota1.value);
+            let nota2 = parseFloat(document.getElementById('ex3').nota2.value);
+            let peso1 = parseFloat(document.getElementById('ex3').peso1.value);
+            let peso2 = parseFloat(document.getElementById('ex3').peso2.value);
+
+            if ((peso1*10)%10 != 0 || (peso2*10)%10 != 0) {
+                alert("Os valores de peso devem ser inteiros.");
+                
+            } else if ((matricula*10)%10 !=0) {
+                alert("A matrícula inválida.")
+            } else {
+                document.getElementById('ex3_1').innerText = matricula
+                document.getElementById('ex3_2').innerText = (calcula_produto(peso1, nota1) + calcula_produto(peso2, nota2))/(peso1 + peso2)
+            }
+        }
+    </script>
+
+    <hr>
+
+    <head>
+        <h2>4. Ex.3 para 2 alunos:????????</h2>
+    </head>
+
+    <form id="ex4">
+        Numero de matrícula <input type="number" id="matricula"><br>
+        Digite a nota <input type="number" id="nota1"> e peso <input type="number" id="peso1"><br>
+        Digite a nota <input type="number" id="nota2"> e peso <input type="number" id="peso2"><br>
+        <button type="button" onclick="calculate_ex4()">calculate</button><br>
+
+        Matrícula: <span id="ex4_1"></span> - Média: <span id="ex4_2"></span><br>
+    </form>
+
+    <script>
+        function calculate_ex4(){
+            let matricula = parseFloat(document.getElementById('ex4').matricula.value);
+            let nota1 = parseFloat(document.getElementById('ex4').nota1.value);
+            let nota2 = parseFloat(document.getElementById('ex4').nota2.value);
+            let peso1 = parseFloat(document.getElementById('ex4').peso1.value);
+            let peso2 = parseFloat(document.getElementById('ex4').peso2.value);
+
+            if ((peso1*10)%10 != 0 || (peso2*10)%10 != 0) {
+                alert("Os valores de peso devem ser inteiros.");
+                
+            } else if ((matricula*10)%10 !=0) {
+                alert("A matrícula inválida.")
+            } else {
+                document.getElementById('ex4_1').innerText = matricula
+                document.getElementById('ex4_2').innerText = (calcula_produto(peso1, nota1) + calcula_produto(peso2, nota2))/(peso1 + peso2)     
+            }
+            
+        }
+    </script>
+
+    <hr>
+
+    <head>
+        <h2>5. Cálculo do salário após desconto.</h2>
+
+        <script>
+            function inss(salario) {
+                return salario*0.1;
+            }
+
+            function fgts(salario) {
+                return salario*0.08;
+            }
+
+        const plano_saude = 100
+        </script>
+    </head>
+    <form id="ex5">
+        Digite seu salário bruto em R$:<input type="number" id="salario">
+        <input type="button" value="calculate" onclick="calculate_ex5()"><br>
+        Salário depois de desconto: R$<span id="ex5_1"></span>
+    </form>
+    
+    <script>
+        function calculate_ex5() {
+            let salario = parseFloat(document.getElementById('ex5').salario.value);
+
+            document.getElementById('ex5_1').innerText = salario - inss(salario) - fgts(salario) - plano_saude
+        }
+
+    </script>
+
+    <hr>
+
+    <head>
+        <h2>6. Resultado de notas parciais.</h2>
+    </head>
+    <form id="ex6">
+        Primeira nota parcial: <input type="number" id="nota1"><br>
+        Segunda nota parcial: <input type="number" id="nota2"><br>
+        <button type="button" onclick="calculate_ex6()">calculate</button><br>
+        Resultado: <span id="ex6_1"></span>
+    </form>
+    
+    <script>
+        function calculate_ex6() {
+            let nota1 = parseFloat(document.getElementById('ex6').nota1.value);
+            let nota2 = parseFloat(document.getElementById('ex6').nota2.value);
+            const media = calcula_media(nota1, nota2)  //calcula_media() é adotado do ex1
+
+            if (media == 10) {
+                document.getElementById('ex6_1').innerText = "Aprovado com Distinção"
+            } else if (media >= 7) {
+                document.getElementById('ex6_1').innerText = "Aprovado"
+            } else {
+                document.getElementById('ex6_1').innerText = "Reprovado"
+            }
+        }
+        
+    </script>
+
+    <hr>
+
+    <head>
+        <h2>7. Resultado do aumento salarial</h2>
+        
+        <script>
+             function aumento_salario(salario) {
+                if(salario <= 280) {
+                    return salario*0.2;
+                } else if (salario <= 700) {
+                    return salario*0.15;
+                } else if (salario <= 1500) {
+                    return salario*0.1
+                } else {
+                    return salario*0.05
+                }
+            }
+        </script>
+    </head>
+    <form id="ex7">
+        O salário atual em R$: <input type="number" id="salario">
+        <input type="button" value="calculate" onclick="calculate_ex7()"> <br>
+        O salário antes do ajuste é R$ <span id="ex7_1"></span><br>
+        O percentual de aumento aplicado é <span id="ex7_2"></span>%<br>
+        O valor do aumento é R$<span id="ex7_3"></span><br>
+        O novo salário, após o aumento é R$<span id="ex7_4"></span><br>
+    </form>
+    
+    <script>
+        function calculate_ex7() {
+            const salario = parseFloat(document.getElementById('ex7').salario.value);
+            const aumento = aumento_salario(salario);
+
+            document.getElementById('ex7_1').innerText = salario;
+            document.getElementById('ex7_2').innerText = (aumento/salario)*100;
+            document.getElementById('ex7_3').innerText = aumento;
+            document.getElementById('ex7_4').innerText = aumento+salario;
+        }
+
+    </script>
+
+    <hr>
+
+    <head>
+        <h2>8. Folha de pagamento</h2>
+
+        <script>
+            function inss(salario) {
+                return salario*0.1;
+            }
+
+            function fgts(salario) {
+                return salario*0.11;
+            }
+
+            function ir(salario) {
+                return salario*0.05
+            }
+        </script>
+    </head>
+
+        <form id="ex8">
+            O valor da sua hora em R$: <input type="number" id="valor"><br>
+            Horas trabalhadas no mês: <input type="number" id="hora"><br>
+            <input type="button" value="calculate" onclick="calculate_ex8()"><br>
+            Salário Bruto: (<span id="ex8_1"></span>*<span id="ex8_2"></span>) &ensp;: R$ <span id="ex8_3"></span><br>
+            (-) IR (5%)    &nbsp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;: R$ <span id="ex8_4"></span><br>
+            (-) INSS (10%)   &nbsp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;: R$ <span id="ex8_5"></span><br>
+            FGTS (11%)      &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;: R$ <span id="ex8_6"></span><br>
+            Total de descontos      &ensp;&ensp;: R$ <span id="ex8_7"></span><br>
+            Salário Liquido   &nbsp;&ensp;&ensp;&ensp;&ensp;&ensp;: R$ <span id="ex8_8"></span><br>
+
+         
+
+        </form>
+    <script>
+        function calculate_ex8() {
+            const valor = parseFloat(document.getElementById('ex8').valor.value);
+            const hora = parseFloat(document.getElementById('ex8').hora.value);
+            const salario = valor*hora
+
+            document.getElementById('ex8_1').innerText = valor;
+            document.getElementById('ex8_2').innerText = hora;
+            document.getElementById('ex8_3').innerText = salario;
+            document.getElementById('ex8_4').innerText = ir(salario);
+            document.getElementById('ex8_5').innerText = inss(salario);
+            document.getElementById('ex8_6').innerText = fgts(salario);
+            document.getElementById('ex8_7').innerText = ir(salario) + inss(salario);
+            document.getElementById('ex8_8').innerText = salario - ir(salario) - inss(salario);
+        }
+    </script>
+</body>
+</html>
