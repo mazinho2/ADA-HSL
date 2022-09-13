@@ -344,7 +344,14 @@
             }
 
             function ir(salario) {
-                return salario*0.05
+                if (salario <= 900)
+                    return 0
+                else if (salario <=1500)
+                    return 5
+                else if (salario <=2500)
+                    return 10
+                else
+                    return 20
             }
         </script>
     </head>
@@ -354,11 +361,11 @@
             Horas trabalhadas no mês: <input type="number" id="hora"><br>
             <input type="button" value="calculate" onclick="calculate_ex8()"><br>
             Salário Bruto: (<span id="ex8_1"></span>*<span id="ex8_2"></span>) &ensp;: R$ <span id="ex8_3"></span><br>
-            (-) IR (5%)    &nbsp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;: R$ <span id="ex8_4"></span><br>
-            (-) INSS (10%)   &nbsp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;: R$ <span id="ex8_5"></span><br>
-            FGTS (11%)      &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;: R$ <span id="ex8_6"></span><br>
-            Total de descontos      &ensp;&ensp;: R$ <span id="ex8_7"></span><br>
-            Salário Liquido   &nbsp;&ensp;&ensp;&ensp;&ensp;&ensp;: R$ <span id="ex8_8"></span><br>
+            (-) IR (<span id="ex8_4"></span> %)    &nbsp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;: R$ <span id="ex8_5"></span><br>
+            (-) INSS (10%)   &nbsp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;: R$ <span id="ex8_6"></span><br>
+            FGTS (11%)      &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;: R$ <span id="ex8_7"></span><br>
+            Total de descontos      &ensp;&ensp;: R$ <span id="ex8_8"></span><br>
+            Salário Liquido   &nbsp;&ensp;&ensp;&ensp;&ensp;&ensp;: R$ <span id="ex8_9"></span><br>
 
          
 
@@ -373,10 +380,11 @@
             document.getElementById('ex8_2').innerText = hora;
             document.getElementById('ex8_3').innerText = salario;
             document.getElementById('ex8_4').innerText = ir(salario);
-            document.getElementById('ex8_5').innerText = inss(salario);
-            document.getElementById('ex8_6').innerText = fgts(salario);
-            document.getElementById('ex8_7').innerText = ir(salario) + inss(salario);
-            document.getElementById('ex8_8').innerText = salario - ir(salario) - inss(salario);
+            document.getElementById('ex8_5').innerText = salario * (ir(salario)/100);
+            document.getElementById('ex8_6').innerText = inss(salario);
+            document.getElementById('ex8_7').innerText = fgts(salario);
+            document.getElementById('ex8_8').innerText = salario * (ir(salario)/100) + inss(salario);
+            document.getElementById('ex8_9').innerText = salario - salario * (ir(salario)/100) - inss(salario);
         }
     </script>
 </body>

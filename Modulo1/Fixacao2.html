@@ -280,7 +280,14 @@
         }
 
         function ir(salario) {
-            return salario*0.05
+                if (salario <= 900)
+                    return 0
+                else if (salario <=1500)
+                    return 5
+                else if (salario <=2500)
+                    return 10
+                else
+                    return 20
         }
 
         const valor = parseFloat(prompt("Digite o valor da sua hora em R$:"));
@@ -288,11 +295,11 @@
         const salario = valor*hora
 
         console.log("Salário Bruto: (%d * %d): R$", valor, hora, salario);
-        console.log("(-) IR (5%): R$", ir(salario));
+        console.log('(-) IR (',ir(salario),'%): R$', salario * ir(salario));
         console.log("(-) INSS (10%): R$", inss(salario));
         console.log("FGTS (11%): R$", fgts(salario));
-        console.log("Total de descontos: R$", ir(salario) + inss(salario));
-        console.log("Salário Liquido: R$", salario - ir(salario) - inss(salario));
+        console.log("Total de descontos: R$", salario * ir(salario) + inss(salario));
+        console.log("Salário Liquido: R$", salario - salario * ir(salario) - inss(salario));
 
     </script>
 </body>
