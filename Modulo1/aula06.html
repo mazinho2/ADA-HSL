@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script> 
+        // As tr"es funções de Array de alta ordem mais importante 
+
+        // Recursão
+        const array_nums = [1, 2, [2, 3, 4, [4, 5, 6]], 9, 0, 8, [10, 23]]
+
+        // Fibonacci -> fb(n) = fb(n-1) + fb(n-2)
+
+        function fibonacci(n) {
+            if (n==0 || n ==1) return 1;
+            else    
+                return fibonacci(n-1) + fibonacci(n-2);
+        }
+
+        // fatorial
+        function fatorial(n) {
+            if (n == 1) return 1;
+            else
+                return n * fatorial(n-1);
+        }
+        
+        // sum of the numbers in array
+        function sum_array(array) {
+            let sum = 0
+            for (let i = 0; i < array.length; i++) {
+                if (typeof(array[i]) != 'number')
+                    sum += sum_array (array[i]);
+                else 
+                    sum += array[i];
+            }
+            return sum
+        }
+
+        function sum_array_recursive(array) {
+            let sum = 0
+            for (let elem of array) {    
+                if (typeof elem == 'number') {
+                    sum += elem;
+                }
+                else if (typeof elem == 'object') {
+                    sum += sum_array_recursive(elem);
+                }
+            }
+            return sum
+        }
+
+        console.log(sum_array(array_nums))
+        console.log(sum_array_recursive(array_nums))
+
+
+    </script>
+</body>
+</html>
