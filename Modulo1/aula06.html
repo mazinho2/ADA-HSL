@@ -8,7 +8,89 @@
 </head>
 <body>
     <script> 
-        // As tr"es funções de Array de alta ordem mais importante 
+        // As três funções de Array de alta ordem mais importante 
+        const array_obj_alunos = [
+            {
+                "nome": "Luís",
+                "matricula": 11111,
+                "coef_rend": 7.1,
+                cpf: 1231231235,
+                notas: [3, 5, 6]
+            },
+            {
+                "nome": "Caroline",
+                "matricula": 22222,
+                "coef_rend": 8.2,
+                cpf: 1231231235,
+                notas: [3, 5, 6, 7]
+            },
+            {
+                "nome": "Andressa",
+                "matricula": 33333,
+                "coef_rend": 9.3,
+                cpf: 1231231235,
+                notas: [8, 9, 9.4, 8.3]
+            },
+        ];  
+
+
+        const array_names = [];
+        for (let obj of array_obj_alunos) {
+            array_names.push(obj.nome);
+        }
+
+        console.log(array_names);
+
+        
+        // map serve para mapear os dados de um array (transformar ele, ou enxugar o conteúdo)
+        console.log(array_obj_alunos.map((obj) => obj.nome))
+
+        const notas = [3, 5, 6, 7];
+        console.log(notas.map(valor => valor*2));
+
+        // filter -> filtrar o conteúdo do array com base em uma condição
+        console.log(array_obj_alunos.filter((obj) => obj.coef_rend > 8));
+
+            // filter a média menor que 6
+        console.log(array_obj_alunos.filter((obj) => {
+            let soma = 0;
+            for (let nota of obj.notas) {
+                soma += nota;
+            }
+            return soma/obj.notas.length < 6;
+        }))
+
+        // the same thing but simpler
+        console.log(array_obj_alunos.filter((obj) => {
+            let soma = obj.notas.reduce((soma, nota) => soma + nota, 0);
+            return soma/obj.notas.length < 6;
+        }))
+
+        //
+        console.log((array_obj_alunos.reduce((soma, { coef_rend, ...resto_obj}) => {
+            console.log(resto_obj); // prints the infos of the object except the coef_rend
+            return soma + coef_rend;  
+        }, 0)/array_obj_alunos.length).toFixed(2));
+            // the inicial value of the soma is 0
+                // toFixed(2) means the fractionDigit
+
+
+        //
+        function printa_obj({cpf, nome}) {
+            console.log(`${cpf} -> ${nome}`);
+        }
+
+        printa_obj(array_obj_alunos[0]);
+
+        //
+        console.log(array_obj_alunos.reduce((prev, curr) => {
+            // prev.push(curr.nome);
+            // return prev;
+
+            return [...prev, curr.nome];
+        }, []));
+
+
 
         // Recursão
         const array_nums = [1, 2, [2, 3, 4, [4, 5, 6]], 9, 0, 8, [10, 23]]
@@ -21,12 +103,27 @@
                 return fibonacci(n-1) + fibonacci(n-2);
         }
 
+        console.log(fibonacci(7));
+
+
         // fatorial
         function fatorial(n) {
             if (n == 1) return 1;
             else
                 return n * fatorial(n-1);
         }
+        
+        console.log(fatorial(5));
+
+        //
+        function print_letras(string) {
+            if (string =="") return;
+            console.log(string);
+            print_letras(string.substring(1));
+            console.log(string);
+        }
+
+        print_letras("ABACAXI");
         
         // sum of the numbers in array
         function sum_array(array) {

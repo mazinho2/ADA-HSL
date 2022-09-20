@@ -59,19 +59,22 @@ const array_obj_alunos = [
         "nome": "Luís",
         "matricula": 11111,
         "coef_rend": 7.1,
-        cpf: 1231231235     // pode ter ' ' ou não
+        cpf: 1231231235,     // pode ter ' ' ou não
+        notas: [3, 5, 6]
     },
     {
         "nome": "Caroline",
         "matricula": 22222,
         "coef_rend": 8.2,
-        cpf: 1231231236     
+        cpf: 1231231236,
+        notas: [3, 5, 6, 7]   
     },
     {
         "nome": "Andressa",
         "matricula": 33333,
         "coef_rend": 8.3,
-        cpf: 1231231237    
+        cpf: 1231231237,
+        notas: [8, 9, 9.4, 8.3] 
     }
 ]
 
@@ -133,8 +136,8 @@ console.log(array_obj_alunos.every((obj) => obj.nome < 'F'));
 console.log(array_obj_alunos.every((obj) => obj.nome < 'M')); 
         // já que colocou numa linha só não precisa usar 'return'
 
-// some()   -> retorna true se pelo menos 1 elemento do array respetia a condição
-console.log(array_obj_alSunos.some((obj) => obj.nome < 'F')); 
+// some()   -> retorna true se pelo menos 1 elemento do array respeta a condição
+console.log(array_obj_alunos.some((obj) => obj.nome < 'F')); 
 
 
 // includes() -> retorna true se um elemento existe dentro de um array
@@ -159,25 +162,29 @@ for (let i in palavra) {
     string_inicial += "_";
 } 
 
-console.log(palavra) //-> a palavra permanece 'abacaxi'
-
-for (let i in palavra) {
-    string_inicial += "_";
-} 
+console.log(palavra) //-> a palavra permanece 'abacaxi' 
 
 console.log(string_inicial); //-> retorna '_______'
-console.log(string_inicial.split("")); 
+
+const array_string = string_inicial.split("");
+console.log(array_string); 
 
 
-// // indexOf()     19.09.2022
+// trocar _ em todas as posições em que existir a letra digitada na minha palavra original
+if (palavra.includes(letra)) {
+    for (let i = 0; i < palavra.length; i++) {
+        if (palavra[i] == letra) {
+            array_string[i] = letra;
+        }
+    }
+    console.log("Acertou!");;
+}
+else {
+    console.log("Errou!");
+}
 
-// const array_palavra = palavra.split("");
-// const letra2 = 'a'
-// console.log(array_palavra.indexOf(letra2)); // retorna a primeira posição da letra2
+console.log(array_string);
 
-// for (let i=0; i<array_palavra.length; i++) {
-//     let index = array_palavra.indexOf(letra2);
-//     if (index == -1)
-//         break;
-//     else    array_string[index] = letra;
-// }
+// Converter um array em uma string. .. 
+console.log(array_string.join(''));
+console.log(array_string.join());
