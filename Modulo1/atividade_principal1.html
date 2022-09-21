@@ -19,6 +19,77 @@ EXTRA (300XP)
     <title>Document</title>
 </head>
 <body>
-    
+    <script>
+        // functions 
+        function hangman(letter, guess, word){ // recebe a letra e devolve a advinha renovada
+            let guess_array = guess.split('')
+            for (let i=0; i < word.length; i++) {
+                if (word[i] == letter) {
+                    guess_array[i] = letter
+                }
+            }
+            return guess_array.join('');
+        }
+
+        function randomItem(a) { // escolhe palavra aleatório da lista
+            return a[Math.floor(Math.random() * a.length)]
+        }
+
+        // Start
+
+        wordbank = ['gentleman', 'apple', 'technology', 'airplane', 
+            'badminton', 'designer', 'paris', 'coffee', 'science', 'data']
+
+        alert('Bem vindo ao jogo da forca!');
+
+        
+        let mais = true;
+
+        // Process of guessing
+        while (mais) { // se vai fazer mais jogo
+
+            const word = randomItem(wordbank);
+            // console.log(word); // para saber a letra no checkup
+            let guessed_letter = '';
+
+            // hint
+            alert(`A palavra tem ${word.length} letras`);
+
+            // converting 
+            let guess_string ='';
+
+            for (let i in word) {
+                guess_string += '_';
+            }
+            
+            console.log(guess_string);
+            
+            // start
+            while (guess_string != word) {
+
+                let letter = prompt('Escolhe uma letra:') // recebe letra
+                const regex = /^[a-z|A-Z]+$/; //só letras
+
+                if (regex.test(letter)) { // checking se `letter` é uma letra
+                    if (word.includes(letter)) { // checking se a 'letter' é uma letra válida
+                        guess_string = hangman(letter, guess_string, word);
+                    }
+                    else {
+                        console.log(`A letra ${letter} não existe na palavra`);
+                    }
+
+                    console.log(guess_string)
+                    
+                    guessed_letter += letter;
+                    console.log('Letras usados: ', guessed_letter);
+                }
+                else {
+                    alert('Insere somente letra!!')
+                }
+            }
+
+            mais = confirm('Quer mais um jogo?')
+        }    
+    </script>
 </body>
 </html>
