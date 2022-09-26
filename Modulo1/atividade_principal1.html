@@ -48,9 +48,9 @@ EXTRA (300XP)
         // Process of guessing
         while (mais) { // se vai fazer mais jogo
 
-            const word = randomItem(wordbank);
-            // console.log(word); // para saber a letra no checkup
-            let guessed_letter = '';
+            const word = randomItem(wordbank); //random word from array
+            // console.log(word); // para saber a resposta no checkup
+            let guessed_letter = ''; // para mostrar as letras que foram usadas 
 
             // hint
             alert(`A palavra tem ${word.length} letras`);
@@ -72,22 +72,23 @@ EXTRA (300XP)
 
                 if (regex.test(letter)) { // checking se `letter` é uma letra
                     if (word.includes(letter)) { // checking se a 'letter' é uma letra válida
+                        alert('A letra está na palavra!')
                         guess_string = hangman(letter, guess_string, word);
                     }
                     else {
                         console.log(`A letra ${letter} não existe na palavra`);
                     }
 
-                    console.log(guess_string)
+                    console.log(guess_string) // processo do jogo
                     
-                    guessed_letter += letter;
+                    guessed_letter += letter; // acúmulo de letras usadas 
                     console.log('Letras usados: ', guessed_letter);
                 }
                 else {
                     alert('Insere somente letra!!')
                 }
             }
-
+            alert('Você Acertou a palavra!! ')
             mais = confirm('Quer mais um jogo?')
         }    
     </script>
