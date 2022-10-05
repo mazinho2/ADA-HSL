@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // Classes
+        class Registro {
+            constructor(name, sexo, curso, turma, id){
+                this.name = name;
+                this.sexo = sexo;
+                this.curso = curso;
+                this.turma = turma;
+                this.id = id;
+            }
+
+            infoAluno(){
+                console.log('Nome:', this.name, '\nSexo:', this.sexo, '\nCurso:', this.curso, '\nTurma:', this.turma, '\nID:', this.id)
+            }
+            mudarTurma(){
+                let t = prompt('Para qual turma gostaria de mudar? ')
+                if (this.turma != t) {
+                    this.turma = t;
+                console.log(`Foi mudado para ${this.turma}`);
+                }
+            }
+
+            set sexo(value){ // confere se colocou o sexo correto (Masculino/Feminino)
+                const s = ['Masculino', 'Feminino']
+                if (s.includes(value)){
+                    this.sex = value;
+                }
+                else {
+                    alert('Escolhe entre Masculino e Feminino');
+                    this.sexo = prompt('Sexo: ');
+                }
+            }
+            get sexo(){
+                return this.sex;
+            }
+        }
+        class Curso {
+            constructor(curso, periodo, duracao, credito_total, credito_obrigatorio){
+                this.curso = curso;
+                this.periodo = periodo;
+                this.duracao = duracao;
+                this.tcredito = credito_total;
+                this.ocredito = credito_obrigatorio;
+                this.opcredito = this.tcredito - this.ocredito;
+            }
+
+            description() {
+                console.log('Curso:', this.curso, '\nPeriodo:', this.periodo, '\nDuração:', this.duracao, 'anos',
+                            '\nCréditos Obrigatórios:', this.ocredito, '\nCréditos Optativos:', this.opcredito, 
+                            '\nCrédito Total:', this.tcredito)
+            }
+            optativaLivre() { //Quantidade de créditos optativas que pode ser concluídos fora do curso (20%)
+                let livre = this.opcredito * 0.3
+                console.log(`Você pode fazer até ${Math.floor(livre)} créditos fora do/a ${this.curso}`);
+            }
+
+            set periodo(per) { //se colocasse o novo periodo, muda a duração dependendo da troca
+                const p = ['Integral', 'Diurno', 'Noturno']
+                if (p.includes(per)){
+                    if (this.periodo == 'Integral' & (per == 'Noturno'| per == 'Diurno')){
+                        this.period = per;
+                        ++this.duracao; 
+                        console.log(`Há novo periodo e duracao.`)
+
+                    }
+                    else if((this.periodo == 'Noturno' | this.periodo == 'Diurno') & per == 'Inegral'){
+                        this.period = per;
+                        --this.duracao;
+                        console.log(`Há novo periodo e duracao.`)
+                    }
+                    else {
+                        this.period = per;
+                        console.log('Há novo periodo')
+                    }
+                    this.description()
+
+                }
+                else {
+                    alert('Digite o periodo válido: Integral / Diurno / Noturno');
+                    this.periodo = prompt('Periodo: ')
+                }
+            }
+
+            get periodo() {
+                return this.period;
+            }
+        }
+
+        class Disciplina {
+            constructor(disciplina, orientador, faculdade, s_ideal, credito){
+                this.disciplina = disciplina;
+                this.orientador = orientador;
+                this.faculdade = faculdade;
+                this.ideal = s_ideal;
+                this.credito = credito;
+            }
+            description() {
+                console.log('Diciplina:', this.disciplina, '\nOrientador:', this.orientador, 
+                            '\nFaculdade:', this.faculdade, '\nSemestre Ideal:', this.ideal, 
+                            '\nCreditos:', this.credito)
+            }
+            prorrogar(semestre){ // semestre quando vai matricular a matéria
+                if (semestre > this.ideal) {
+                    let ano = Math.ceil((semestre - this.ideal)/2)
+                    console.log(`Vai atrasar ${ano} ano até a formação.`)
+                }
+                else if (semetre == this.ideal) {
+                    console.log('Está no semestre ideal.')
+                }
+                else {
+                    console.log('Não pode antecipar.')
+                }
+            }
+
+            set orientador(prof) {
+                const professors = {'Mario':'FCF', 'Paula':'FSP', 'James':'ICB'} //lista de professores para aplicar 
+                if (Object.keys(professors).includes(prof)){
+                    this.new_orientador = prof;
+                    this.faculdade = professors[prof];
+
+                    console.log('Dado da disciplina renovada');
+                    this.description();
+                }
+                else {
+                    alert('Professor indiponível para essa matéria');
+                    this.orientador = prompt('Nome do professor: Mario / James / Paula')
+                }
+                
+            }
+            get orientador() {
+                return this.new_orientador;
+            }
+
+        }
+
+        
+        
+        // exemples
+
+        let Ma = new Registro('Ma', 'Masculino', 'Farmácia', '018D', 10758522)
+        let Toxicologia = new Disciplina('Toxicologia','Mario', 'FCF', '8', 2)
+        let Farmacia = new Curso('Farmacia', 'Integral', 5, 303, 269)
+        Ma.infoAluno()
+        Toxicologia.description()
+        Farmacia.description()
+
+
+    </script>
+</body>
+</html>

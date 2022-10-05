@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Carro {
+            constructor (marca, cor) {
+                this.marca = marca;
+                this.cor = cor;
+            }
+
+            infoMarca() {
+                return 'Eu tenho um ' + this.marca;
+            }
+        }
+
+        class Modelo extends Carro {
+            constructor(marca, modelo, cor){
+                super(marca, cor);
+                this.modelo = modelo;
+            }
+
+            infoMarcaModelo() {
+                console.log(this.infoMarca() + ' , modelo ' + this.modelo + ', cor' + this.cor)
+            }
+        }
+
+        let meuCarro = new Modelo ('Volkswagen', 'Fusca', "laranja")
+
+        meuCarro.infoMarcaModelo();
+    </script>
+</body>
+</html>
