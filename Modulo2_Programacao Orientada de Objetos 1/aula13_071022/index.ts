@@ -1,30 +1,43 @@
-class Veterinario{
+class Veterinario {
 
-    nome:string='';
-    especialidade:string='';
-    idade:number=0;
-    sexo:string='';
-    formacao:string='';
-    clinica:string='';
+    nome:string;
+    clinica:string;
+    cpf:number;
+    idade:number;
+    sexo:string;
+    protected crmv:number;
 
-    private salario:number=0;
-    private crmv:number=0;
-
-    constructor(crmv:number, nome:string, clinica:string, especialidade:string, 
-                formacao:string, idade: number, sexo:string, salario:number){
-        this.crmv = crmv;
+    constructor(crmv:number, nome:string, clinica:string, cpf:number, idade:number, sexo:string){
         this.nome = nome;
         this.clinica = clinica;
-        this.especialidade = especialidade;
-        this.formacao = formacao;
+        this.cpf = cpf;
         this.idade = idade;
         this.sexo = sexo;
-        this.salario = salario;
+        this.crmv = crmv;
+    }
+
+    info(){
+        console.log(`CRMV: ${this.crmv} \nNome: ${this.nome} \nClinica: ${this.clinica}`,
+                    `\nIdade: ${this.idade} \nSexo: ${this.sexo} \nCPF: ${this.cpf}`)
+    }
+}
+class Especialista extends Veterinario{
+
+    especialidade:string;
+    formacao:string;
+
+    constructor(crmv:number, nome:string, clinica:string, cpf:number, idade: number, sexo:string,
+                 especialidade:string, formacao:string){
+        
+        super(crmv, nome, clinica, cpf, idade, sexo);
+        this.especialidade = especialidade;
+        this.formacao = formacao;
 
     }
 
     info(){
-        console.log('CRMV: ${} \nNome: ${} \nClinica: ${} \nEspecialidade: ${}',
-                 '\nFormacao: ${} \nIdade: ${} \nSexo: ${} \nSalário: ${}')
+        console.log(`CRMV: ${this.crmv} \nNome: ${this.nome} \nClinica: ${this.clinica} \nEspecialidade: ${this.especialidade}`,
+                 `\nFormacao: ${this.formacao} \nIdade: ${this.idade} \nSexo: ${this.sexo} \nCPF: ${this.cpf}`);
     }
 }
+
