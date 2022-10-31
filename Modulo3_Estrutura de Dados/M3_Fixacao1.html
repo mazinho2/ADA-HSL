@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        //Classes
+
+        class parkinglot{ 
+            //pilha de carros, estaciona o carro e último carro estacionado vai ser retirado primeiro
+            constructor(){
+                this.cars = [];
+            }
+
+            park(placa) {
+                this.cars.push(placa);
+            }
+            
+            remove(){
+                removed = this.cars.pop();
+                console.log(`${removed} foi removido do estacionamento.`)
+                return 
+            }
+
+            find(placa, sortedcars = this.cars.sort(), start = 0, end = this.cars.length -1){
+                let mid = Math.floor((start + end)/2);
+
+                if (start >= end){
+                    console.log(`O carro '${placa}' não está no estacionamento.`)
+                    return;
+                }
+                else if (placa == sortedcars[mid]){
+                    console.log(`O carro '${placa}' está no estacionamento`)
+                    return;
+                } else {
+                    if (placa < sortedcars[mid]){
+                        find(placa, sortedcars, start = start, end = mid-1);
+                    } else {
+                        find(placa, sortedcars, start = mid + 1, end = end);
+                    }
+
+                    // return placa < sortedcars[mid]
+                    //     ? this.find(placa, sortedcars, start = start, end = mid - 1)
+                    //     : this.find(placa, sortedcars, start = mid + 1, end = end);
+                }
+
+                
+            }
+        }
+
+        class carwash { 
+            //fila de lavagem de carro, FIFO
+            constructor(){
+                this.cars = [];
+            }
+
+            dirty(placa){
+                this.cars.push(placa);
+            }
+
+            cleaned(){
+                let clean = this.cars.shift();
+                console.log(`Lavou o carro ${clean}`)
+                return clean;
+            }
+
+            find(placa, sortedcars = this.cars.sort(), start = 0, end = this.cars.length -1){
+                let mid = Math.floor((start + end)/2);
+
+                if (start >= end){
+                    console.log(`O carro '${placa}' não está na fila.`)
+                    return;
+                }
+                else if (placa == sortedcars[mid]){
+                    console.log(`O carro '${placa}' está na fila.`)
+                    return;
+                } else {
+                    if (placa < sortedcars[mid]){
+                        this.find(placa, sortedcars, start = start, end = mid-1);
+                    } else {
+                        this.find(placa, sortedcars, start = mid + 1, end = end);
+                    }
+
+                    // return placa < sortedcars[mid]
+                    //     ? this.find(placa, sortedcars, start = start, end = mid - 1)
+                    //     : this.find(placa, sortedcars, start = mid + 1, end = end);
+                }
+
+                
+            }
+        }
+
+
+        
+        // 
+
+        let vehicles = ['abc123', 'wed512', 'rfg857', 'pud964', 'due785', 'wgx654', 'ijn951', 'qwe456', 'vzs685', 'wst521']
+        dirtycars = new carwash();
+        cleancars = new parkinglot();
+
+
+        for (let v of vehicles) {
+            dirtycars.dirty(v);
+        }
+        console.log(dirtycars.cars)
+        cleancars.park(dirtycars.cleaned()) //cleand cars are relocated directly to the parkinglot 
+        
+        console.log(dirtycars.cars)
+        console.log(dirtycars.find('wed512'))
+        console.log(dirtycars.find('awd123'))
+
+        console.log(cleancars.cars)
+        
+
+        
+
+        
+
+    </script>
+</body>
+</html>
